@@ -1,0 +1,10 @@
+defaults:
+  - _self_
+
+suite: 'manipulation'
+scenes:
+  - default_scene
+task_picked: default_task
+tasks:
+  - default_scene:
+    - 'default_task'

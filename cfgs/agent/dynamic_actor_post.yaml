@@ -1,0 +1,45 @@
+﻿_target_: agent.post_dynamic_actor.PostDynamicActor
+
+stage: post
+
+base_weight_dir: ${base_weight_dir}
+
+use_memory_router: True
+use_img_head: False
+memory_router: ${memory_router}
+img_head: ${img_head}
+lr: ${lr}
+action_head: ${action_head}
+
+load_prior_action_head_weights: False
+freeze_modal_encoder: True
+backbone_frozen_when_posttrain: True
+action_query_frozen_when_posttrain: True
+
+sample_interval: 15
+max_his_cache : 20
+q_type: 'global_token'
+kv_type: 'his_token'
+num_his_tokens: 1
+
+img_loss_coef: 100
+
+img_encoder: ???
+backbone: ???
+action_dim: ???
+proprio_dim: ???
+img_size: ???
+num_views: ???
+pixel_keys: ???
+proprio_key: ???
+lang_key: ???
+hidden_dim: ???
+num_queries: ???
+action_arrange_type: ???
+action_loss_coef: ???
+lang_encoder: ???
+use_proprio: ???
+use_language: ???
+history_len: ???
+num_act_tokens: ???
+num_img_tokens: ???

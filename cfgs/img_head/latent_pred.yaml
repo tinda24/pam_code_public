@@ -1,0 +1,9 @@
+﻿_target_: modules.img_head.latent_pred.ImgHead
+cond_dim: ${agent.hidden_dim}
+hidden_dim: 512
+num_iterations: 4
+z_length: 18
+z_dim: 14
+num_future_queries: ${agent.num_queries}
+num_past_queries: 0
+dropout: 0.1

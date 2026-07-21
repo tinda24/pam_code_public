@@ -1,0 +1,16 @@
+_target_: modules.action_head.dit_flow.ActionHead
+
+stage: ${agent.stage}
+action_dim: ${agent.action_dim}
+hidden_dim: ${agent.hidden_dim}
+num_past_queries: 0
+num_future_queries: ${agent.num_queries}
+
+num_heads: 8
+num_layers: 3
+d_model: 512
+
+timestep_emb_type: "untrainable_fourier"
+timestep_emb_params: {"scale": 0.2}
+
+sampling_steps: 20

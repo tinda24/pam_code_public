@@ -1,0 +1,44 @@
+﻿defaults:
+  - _self_
+  - agent: dynamic_actor_base
+  - img_encoder: dinov2_with_adapter
+  - backbone: gpt_large
+  - action_head: dit_flow_layer3_512
+  - suite: manipulation
+  - dataloader: hdf5_base
+  - override hydra/launcher: submitit_local
+lang_encoder: minilm
+
+debug: False
+obs_mode: pixel
+
+local_host_id: 12251
+stage: base
+Save_Title: ${suite.task.task_picked}_${stage}
+
+multi_gpu: [1]
+
+root_dir: YOUR_PROJECT_ROOT
+datapath: YOUR_DATASET_ROOT
+
+seed: 0
+device: cuda
+
+lr: 1e-4
+batch_size: 64
+num_train_steps: 201000
+eval_every_steps: 1000
+log_every_steps: 10
+save_every_steps: 10000
+fig_every_steps: 1000
+
+hydra:
+  run:
+    dir: ${root_dir}/checkpoints/${Save_Title}/${now:%Y.%m.%d}/${now:%H%M%S}
+  sweep:
+    dir: ${root_dir}/checkpoints/${Save_Title}/${now:%Y.%m.%d}/${now:%H%M%S}
+    subdir: ${hydra.job.num}
+  launcher:
+    tasks_per_node: 1
+    nodes: 1
+    submitit_folder: ${root_dir}/checkpoints/${Save_Title}/${now:%Y.%m.%d}/${now:%H%M%S}/.slurm

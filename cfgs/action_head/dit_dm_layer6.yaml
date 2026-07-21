@@ -1,0 +1,17 @@
+_target_: modules.action_head.dit_dm.DitHead
+
+stage: ${agent.stage}
+action_dim: ${agent.action_dim}
+num_past_queries: ${agent.num_past_queries}
+num_future_queries: ${agent.num_future_queries}
+
+num_dit_heads: 8
+num_dit_layers: 6
+num_new_layers: 2
+decoder_hidden_dim: ${agent.hidden_dim}
+
+train_timesteps : 100
+val_timesteps : 10
+
+time_embed_dim : 256
+learnable_w : False

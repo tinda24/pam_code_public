@@ -1,0 +1,61 @@
+﻿defaults:
+  - _self_
+  - agent: dynamic_actor_post
+  - memory_router: his_perceiver
+  - action_head: dit_flow_layer3_512_post_put_last
+  - img_head: latent_pred
+  - suite: manipulation
+  - dataloader: hdf5_post
+  - override hydra/launcher: submitit_local
+lang_encoder: minilm
+
+local_host_id: 11121
+Save_Title: ${suite.task.task_picked}_${stage}
+multi_gpu: [1]
+debug: False
+
+eval: False
+eval_every_steps: 500
+eval_cache_path: None
+
+cache_path: YOUR_CACHE_ROOT
+datapath: YOUR_DATASET_ROOT
+root_dir: YOUR_PROJECT_ROOT
+base_dir: YOUR_BASE_RUN_DIR
+
+sample_interval: ${agent.sample_interval}
+max_his_cache : ${agent.max_his_cache}
+
+batch_size: 64
+lr: 1e-4
+num_train_steps: 200000
+
+log_every_steps: 10
+save_every_steps: 10000
+fig_every_steps: 1000
+
+stage: post
+space_maintain_to_keep_ckptsave_safe: None
+
+round: 80000
+base_weight_dir: ${base_dir}/snapshot/${round}.pt
+base_config_dir: ${base_dir}/.hydra/config.yaml
+base_stats_path: ${base_dir}/stats.hdf5
+
+load_bc: False
+bc_weight: None
+
+img_size: [240,320]
+seed: 0
+device: cuda
+obs_hw: ${suite.img_size}
+hydra:
+  run:
+    dir: ${root_dir}/checkpoints_post/${Save_Title}/${now:%Y.%m.%d}/${now:%H%M%S}
+  sweep:
+    dir: ${root_dir}/checkpoints_post/${Save_Title}/${now:%Y.%m.%d}/${now:%H%M%S}
+    subdir: ${hydra.job.num}
+  launcher:
+    tasks_per_node: 1
+    nodes: 1
+    submitit_folder: ${root_dir}/checkpoints_post/${Save_Title}/${now:%Y.%m.%d}/${now:%H%M%S}/.sl

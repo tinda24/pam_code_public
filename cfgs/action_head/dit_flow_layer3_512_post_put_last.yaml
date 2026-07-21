@@ -1,0 +1,18 @@
+_target_: modules.action_head.dit_flow_post.ActionHead
+
+stage: post
+action_dim: ${agent.action_dim}
+hidden_dim: ${agent.hidden_dim}
+num_past_queries: ${agent.num_past_queries}
+num_future_queries: ${agent.num_future_queries}
+
+num_heads: 8
+num_layers: 4
+num_new_layers: 1
+post_type: last
+d_model: 512
+
+timestep_emb_type: "untrainable_fourier"
+timestep_emb_params: {"scale": 0.2}
+
+sampling_steps: 20

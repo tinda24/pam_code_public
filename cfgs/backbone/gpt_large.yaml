@@ -1,0 +1,17 @@
+_target_: modules.backbone.gpt.GPT_Backbone
+
+block_size: 65
+input_dim: ${agent.hidden_dim}
+output_dim: ${agent.hidden_dim}
+n_layer: 12
+n_head: 8
+n_embd: ${agent.hidden_dim}
+dropout: 0.1
+backbone_use_uncausal_mask: false
+num_cameras: ${agent.num_views}
+his_len: ${agent.history_len}
+use_proprio: ${agent.use_proprio}
+
+num_act_tokens: ${agent.num_act_tokens}
+num_img_tokens: ${agent.num_img_tokens}
+num_his_tokens: ${agent.num_his_tokens}

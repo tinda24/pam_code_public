@@ -1,0 +1,32 @@
+﻿_target_: agent.dynamic_actor.DynamicActor
+
+stage: base
+obs_mode: ${obs_mode}
+
+img_encoder: ${img_encoder}
+backbone: ${backbone}
+action_head: ${action_head}
+
+action_dim: ${suite.action_dim}
+proprio_dim: ${suite.proprio_dim}
+img_size: [240,320]
+num_views: ${suite.num_views}
+pixel_keys: ${suite.pixel_keys}
+proprio_key: ${suite.proprio_key}
+lang_key: task_emb
+hidden_dim: 512
+
+num_queries: 32
+action_arrange_type: chunk_joint
+
+lr: ${lr}
+action_loss_coef: 100
+
+lang_encoder: ${lang_encoder}
+
+use_proprio: true
+use_language: true
+history_len: 1
+num_act_tokens: 1
+num_img_tokens: 0
+num_his_tokens: 0

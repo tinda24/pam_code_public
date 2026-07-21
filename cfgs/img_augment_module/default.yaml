@@ -1,0 +1,15 @@
+﻿_target_: modules.img_augmentor.default.Processer
+
+use_color_jitter: true
+probability_color_jitter: 0.25
+brightness: 0.2
+contrast: 0.15
+saturation: 0.1
+hue: 0.03
+
+use_affine: True
+probability_affine: 0.15
+rotation: 3
+translate: [0.04, 0.04]
+scale: [0.95, 1.05]
+shear: 1

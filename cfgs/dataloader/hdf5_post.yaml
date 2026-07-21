@@ -1,0 +1,25 @@
+bc_dataset:
+  _target_: read_data.hdf5_post.BCDataset
+  path: ${datapath}
+  cache_path: ${cache_path}
+
+  use_img_head: ${agent.use_img_head}
+  imghead_data_cache_path: None
+  suite: ${suite.task.suite}
+  scenes: ${suite.task.scenes}
+  tasks: ${suite.task.tasks}
+
+  base_stats_path: ${base_stats_path}
+  work_dir: ???
+
+  sample_interval: ${agent.sample_interval}
+  max_his_cache: ${agent.max_his_cache}
+
+  num_future_queries: ${agent.num_queries}
+  num_past_queries: 0
+  action_dim: ${agent.action_dim}
+  action_arrange_type: ${agent.action_arrange_type}
+
+  spilt_datasets_for_multi_gpu: True
+
+  test_mode: ${debug}

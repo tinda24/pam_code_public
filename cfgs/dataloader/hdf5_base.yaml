@@ -1,0 +1,17 @@
+bc_dataset:
+  _target_: read_data.hdf5_base.BCDataset
+  path: ${datapath}
+  suite: ${suite.task.suite}
+  scenes: ${suite.task.scenes}
+  tasks: ${suite.task.tasks}
+
+  num_queries: ${agent.num_queries}
+  obs_mode: ${obs_mode}
+
+  work_dir: ???
+
+  img_size: ${agent.img_size}
+
+  spilt_datasets_for_multi_gpu: True
+
+  debug: ${debug}

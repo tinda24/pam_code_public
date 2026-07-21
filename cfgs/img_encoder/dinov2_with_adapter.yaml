@@ -1,0 +1,9 @@
+﻿_target_: modules.img_encoder.dinov2_with_adapter.Dinov2ObservationEncoder
+dinov2_type: vitb
+frozen: True
+norm: True
+device: cuda
+separate_encoders: false
+pixel_keys: ${suite.pixel_keys}
+output_dim: 2048
+img_size: ${suite.img_size}

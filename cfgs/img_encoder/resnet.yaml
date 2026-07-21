@@ -1,0 +1,10 @@
+_target_: modules.img_encoder.resnet.ResnetRouter
+input_shape: ${suite.img_size}
+output_dim: 512
+pretrained: False
+frozen: False
+remove_layer_num: 2
+no_stride: False
+language_dim: 512
+language_fusion: "film"
+device: cuda

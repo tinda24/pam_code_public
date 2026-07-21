@@ -1,0 +1,17 @@
+﻿_target_: modules.img_head.latent_past_img_pred.ImgHead
+cond_dim: ${agent.hidden_dim}
+
+z_length: 16
+z_dim: 32
+max_his_cache: ${agent.max_his_cache}
+
+num_heads: 8
+num_layers: 3
+d_model: 1024
+
+timestep_emb_type: "untrainable_fourier"
+timestep_emb_params: {"scale": 0.2}
+
+sampling_steps: 20
+
+past_img_pred_flag_for_mainagent: True
